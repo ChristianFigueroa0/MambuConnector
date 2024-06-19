@@ -52,7 +52,7 @@ public class LoanAccountsService
     private readonly IMambuConnector _mambuConnector;
 
     // The constructor receives the Mambu connector.
-    public GroupService(IMambuConnector mambuConnector)
+    public LoanAccountsService(IMambuConnector mambuConnector)
     {
         _mambuConnector = mambuConnector;
     }
@@ -61,7 +61,7 @@ public class LoanAccountsService
     public async Task CreateLoanAccountAsync(LoanAccount loanAccount)
     {
         // The CreateAsync method sends a request to the Mambu API to create the loan account.
-        await _mambuConnector.LoanAccounts.Create(loanAccount);
+        var mambuResponse = await _mambuConnector.LoanAccounts.Create(loanAccount);
 
     }
 }
@@ -87,7 +87,8 @@ public class ClientService
     public async Task<Client> GetClientByIdAsync(string clientId)
     {
         // The GetByIdAsync method queries the API to obtain the client's data.
-        var client = await _mambuConnector.Clients.GetById(clientId);
+        var mambuResponse = await _mambuConnector.Clients.GetById(clientId);
+        var client  = JsonConvert.DeserializeObject<Client>(result.Data);
 
         return client;
     }
@@ -110,7 +111,8 @@ var searchCriteria = new SearchCriteriaBuilder()
     .Build(); // Build the search criteria.
 
 // Use MambuConnector to perform a search operation with the built criteria.
-var clients = await _mambuConnector.Clients.Search(searchCriteria);
+var mambuResponse = await _mambuConnector.Clients.Search(searchCriteria);
+var clients = JsonConvert.DeserializeObject<IEnumerable<Clients>>(result.Data);
 
 ```
 

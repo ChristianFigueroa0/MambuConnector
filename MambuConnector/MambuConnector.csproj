@@ -5,12 +5,14 @@
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>disable</Nullable>
+		<Description>This NuGet package is designed to simplify the configuration and management of a Mambu instance.
+		By encapsulating HTTP requests, this package eases interaction with the Mambu API, allowing for quick and efficient integration.</Description>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.1.1" />
-	  <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
-	  <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.1.1" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 	</ItemGroup>
-
+	
 </Project>

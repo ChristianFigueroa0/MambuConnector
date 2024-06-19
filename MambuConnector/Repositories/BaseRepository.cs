@@ -61,7 +61,6 @@ namespace MambuConnector.Repositories
             {
                 using var client = _httpClientFactory.CreateClient(HttpClientName);
                 var requestMessage = new HttpRequestMessage(method, url);
-                var bodyyyy = JsonConvert.SerializeObject(body);
 
                 if (body != null)
                     requestMessage.Content = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
